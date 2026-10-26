@@ -1,0 +1,55 @@
+[project]
+name = "icl-geometry"
+version = "0.1.0"
+description = "Does representational geometry predict in-context generalization in LLMs? (Neuro 240 final project)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.4",
+    "transformers>=4.57",
+    "accelerate",
+    "safetensors",
+    "numpy",
+    "scipy",
+    "pandas",
+    "pyarrow",
+    "scikit-learn",
+    "statsmodels",
+    "matplotlib",
+    "tqdm",
+    "pyyaml",
+    "jlens",
+    "tabulate>=0.10.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "ipykernel",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/icl_geometry"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "slow: needs model weights or a GPU (deselect with -m 'not slow')",
+]
+
+[tool.uv.sources]
+jlens = { git = "https://github.com/anthropics/jacobian-lens", rev = "581d398613e5602a5af361e1c34d3a92ea82ba8e" }

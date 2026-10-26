@@ -1,0 +1,12 @@
+# Example run config (schema: icl_geometry.io.RunConfig). Unknown keys are kept under `extra`.
+exp: exp1
+model: Qwen/Qwen3.5-0.8B
+prompt_set: data/prompts/exp1_pilot.jsonl
+desc: pilot
+positions: [query_item, decision]
+layers: all          # or a list of block indices
+batch_size: 16
+dtype: float32       # float32 on CPU; bfloat16 on GPU/MPS
+device: auto         # auto | cpu | mps | cuda
+seed: 0
+output_dir: null     # default: results/<run_id>/

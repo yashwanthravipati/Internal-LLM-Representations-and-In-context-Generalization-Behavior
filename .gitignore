@@ -1,0 +1,28 @@
+# Environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.ruff_cache/
+.pytest_cache/
+.DS_Store
+
+# Large / generated data (never commit weights, lenses or activations)
+data/cache/
+data/lenses/
+data/hf_home/
+*.pt
+*.npy
+*.safetensors
+
+# Run outputs: keep only the human-readable summaries
+results/*
+!results/.gitkeep
+!results/**/
+!results/**/REPORT.md
+
+# Generated prompt sets (deterministic from configs/prompts/*.yaml via scripts/make_prompts.py)
+data/prompts/
+
+# Local Claude Code state
+.claude/
