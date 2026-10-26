@@ -1,0 +1,97 @@
+item,class,domestication,source,confidence,notes
+dog,mammal,domestic,curated-v1,high,
+cat,mammal,domestic,curated-v1,high,
+cow,mammal,domestic,curated-v1,high,
+horse,mammal,domestic,curated-v1,high,
+pig,mammal,domestic,curated-v1,high,
+sheep,mammal,domestic,curated-v1,high,
+goat,mammal,domestic,curated-v1,high,
+donkey,mammal,domestic,curated-v1,high,
+hamster,mammal,domestic,curated-v1,high,
+llama,mammal,domestic,curated-v1,high,
+alpaca,mammal,domestic,curated-v1,high,
+ferret,mammal,domestic,curated-v1,high,
+gerbil,mammal,domestic,curated-v1,high,
+mule,mammal,domestic,curated-v1,high,
+ox,mammal,domestic,curated-v1,high,
+poodle,mammal,domestic,curated-v1,medium,breed rather than species
+puppy,mammal,domestic,curated-v1,medium,young dog
+kitten,mammal,domestic,curated-v1,medium,young cat
+pony,mammal,domestic,curated-v1,high,
+bull,mammal,domestic,curated-v1,medium,male cattle
+lion,mammal,wild,curated-v1,high,
+tiger,mammal,wild,curated-v1,high,
+wolf,mammal,wild,curated-v1,high,
+bear,mammal,wild,curated-v1,high,
+fox,mammal,wild,curated-v1,high,
+deer,mammal,wild,curated-v1,high,
+elephant,mammal,wild,curated-v1,high,
+giraffe,mammal,wild,curated-v1,high,
+zebra,mammal,wild,curated-v1,high,
+monkey,mammal,wild,curated-v1,high,
+gorilla,mammal,wild,curated-v1,high,
+kangaroo,mammal,wild,curated-v1,high,
+leopard,mammal,wild,curated-v1,high,
+cheetah,mammal,wild,curated-v1,high,
+hippo,mammal,wild,curated-v1,high,
+rhino,mammal,wild,curated-v1,high,
+otter,mammal,wild,curated-v1,high,
+beaver,mammal,wild,curated-v1,high,
+raccoon,mammal,wild,curated-v1,high,
+moose,mammal,wild,curated-v1,high,
+squirrel,mammal,wild,curated-v1,high,
+badger,mammal,wild,curated-v1,high,
+panda,mammal,wild,curated-v1,high,
+koala,mammal,wild,curated-v1,high,
+hedgehog,mammal,wild,curated-v1,high,
+chimpanzee,mammal,wild,curated-v1,high,
+skunk,mammal,wild,curated-v1,high,
+jaguar,mammal,wild,curated-v1,high,
+antelope,mammal,wild,curated-v1,high,
+bison,mammal,wild,curated-v1,medium,some ranched
+chicken,bird,domestic,curated-v1,high,
+hen,bird,domestic,curated-v1,high,
+rooster,bird,domestic,curated-v1,high,
+turkey,bird,domestic,curated-v1,medium,wild turkeys exist; also a country
+canary,bird,domestic,curated-v1,high,
+budgie,bird,domestic,curated-v1,high,
+parakeet,bird,domestic,curated-v1,medium,"pet budgie, but many wild parakeet species"
+cockatiel,bird,domestic,curated-v1,high,
+goose,bird,domestic,curated-v1,medium,domestic and wild geese both common
+duck,bird,domestic,curated-v1,medium,domestic and wild (mallard) both common
+quail,bird,domestic,curated-v1,medium,farmed and wild
+peacock,bird,domestic,curated-v1,low,kept ornamentally but largely wild
+lovebird,bird,domestic,curated-v1,medium,pet trade and wild
+pigeon,bird,domestic,curated-v1,medium,domestic/feral; also wild rock doves
+chick,bird,domestic,curated-v1,medium,"young bird, usually chicken"
+duckling,bird,domestic,curated-v1,medium,young duck
+eagle,bird,wild,curated-v1,high,
+sparrow,bird,wild,curated-v1,high,
+robin,bird,wild,curated-v1,high,
+crow,bird,wild,curated-v1,high,
+owl,bird,wild,curated-v1,high,
+penguin,bird,wild,curated-v1,high,
+hawk,bird,wild,curated-v1,high,
+falcon,bird,wild,curated-v1,high,
+pelican,bird,wild,curated-v1,high,
+flamingo,bird,wild,curated-v1,high,
+seagull,bird,wild,curated-v1,high,
+raven,bird,wild,curated-v1,high,
+woodpecker,bird,wild,curated-v1,high,
+heron,bird,wild,curated-v1,high,
+stork,bird,wild,curated-v1,high,
+vulture,bird,wild,curated-v1,high,
+hummingbird,bird,wild,curated-v1,high,
+magpie,bird,wild,curated-v1,high,
+albatross,bird,wild,curated-v1,high,
+puffin,bird,wild,curated-v1,high,
+kingfisher,bird,wild,curated-v1,high,
+toucan,bird,wild,curated-v1,high,
+wren,bird,wild,curated-v1,high,
+swallow,bird,wild,curated-v1,high,
+starling,bird,wild,curated-v1,high,
+finch,bird,wild,curated-v1,medium,some kept as pets
+cuckoo,bird,wild,curated-v1,high,
+ostrich,bird,wild,curated-v1,medium,"farmed, but no domestic form"
+emu,bird,wild,curated-v1,medium,"farmed, but no domestic form"
+lark,bird,wild,curated-v1,high,

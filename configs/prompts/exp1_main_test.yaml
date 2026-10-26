@@ -1,0 +1,16 @@
+# Exp 1 final sweep, test split. Parameters are provisional until the pilot fixes D-010
+# (template, m grid, label sets). All 31 categories -> 465 pairs.
+name: exp1_main_test
+experiment: exp1
+split: test
+template: arrow
+seed: 1
+min_confidence: high
+val_frac: 0.4
+m: [1, 2, 4, 8]
+label_sets: [foo_bar]
+label_maps: [0, 1]
+n_demo_sets: 2
+n_orders: 1
+n_queries_per_class: 1
+conditions: [main]

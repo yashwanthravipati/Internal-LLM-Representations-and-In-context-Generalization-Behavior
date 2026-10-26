@@ -1,0 +1,13 @@
+# Tiny prompt set for end-to-end smoke tests of the pipeline (not an experiment).
+name: smoke_exp2_val
+experiment: exp2
+split: val
+template: arrow
+seed: 0
+m: [2, 4]
+label_sets: [foo_bar]
+label_maps: [0, 1]
+n_demo_sets: 2
+n_orders: 1
+conditions: [main, random_label, explicit_rule]
+domains: [numbers, words]

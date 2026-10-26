@@ -1,0 +1,16 @@
+# Exp 2 final sweep, test split. Provisional until D-010 (pilot).
+name: exp2_main_test
+experiment: exp2
+split: test
+template: arrow
+seed: 1
+min_confidence: high
+min_confidence_by_domain: {animals: medium}
+val_frac: 0.4
+m: [2, 4, 8]
+label_sets: [foo_bar, zip_zap]
+label_maps: [0, 1]
+n_demo_sets: 4
+n_orders: 2
+conditions: [main, random_label, explicit_rule]
+domains: [animals, countries, numbers, words]

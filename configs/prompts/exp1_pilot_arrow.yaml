@@ -1,0 +1,18 @@
+# T-016 pilot, Exp 1, `arrow` template, validation split only. 12 categories (66 pairs):
+# within-superordinate pairs (e.g. mammal/bird, fruit/vegetable, tree/flower) and across.
+name: exp1_pilot_arrow
+experiment: exp1
+split: val
+template: arrow
+seed: 0
+min_confidence: high
+val_frac: 0.4
+m: [1, 2, 4, 8]
+label_sets: [foo_bar]
+label_maps: [0, 1]
+n_demo_sets: 2
+n_orders: 1
+n_queries_per_class: 1
+conditions: [main]
+categories: [mammal, bird, fish, insect, fruit, vegetable, tree, flower, vehicle, tool,
+             clothing, kitchenware]

@@ -1,0 +1,16 @@
+# T-016 pilot, Exp 2, `arrow` template, validation split only.
+name: exp2_pilot_arrow
+experiment: exp2
+split: val
+template: arrow
+seed: 0
+min_confidence: high
+min_confidence_by_domain: {animals: medium}
+val_frac: 0.4
+m: [2, 4, 8]
+label_sets: [foo_bar]
+label_maps: [0, 1]
+n_demo_sets: 3
+n_orders: 2
+conditions: [main, random_label, explicit_rule]
+domains: [animals, countries, numbers, words]

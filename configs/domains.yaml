@@ -1,0 +1,96 @@
+# Task domains (T-010; decision D-007). Item lists live in data/items/*.csv and are built by
+# scripts/build_item_banks.py. Attribute words are the J-lens rule-readout concepts (T-041); each
+# needs a single-token form under every model's tokenizer (checked in T-012).
+
+exp1:
+  items: data/items/categories.csv
+  # Category pairs are all unordered pairs of categories; relatedness = shared superordinate
+  # (within-superordinate pairs are the "hard" pairs the brief asks for).
+  relatedness: superordinate
+  min_items_per_category: 20
+  # Zero-shot knowledge check (T-013): forced choice between the true category and foils.
+  questions: ["Is a {item} a kind of {a} or a kind of {b}?", "Question: Which is a {item}, a {a} or a {b}?"]
+  category_names: {kitchenware: kitchen utensil, instrument: musical instrument,
+                   device: electronic device, weather: weather phenomenon, gem: gemstone,
+                   dish: cooked dish, landform: landform}
+
+exp2:
+  animals:
+    items: data/items/animals.csv
+    attributes:
+      class:
+        values: [mammal, bird]
+        words: {mammal: [mammals, fur], bird: [bird, birds, feathers]}  # " mammal" is 2 tokens
+        meaningful_labels: [" mammals", " birds"]
+        questions: ["Is a {item} a mammal or a bird?", "Question: Is the {item} a bird or a mammal?"]
+        answers: {mammal: " mammal", bird: " bird"}
+      domestication:
+        values: [domestic, wild]
+        words: {domestic: [domestic, pet, farm, tame], wild: [wild, jungle, forest]}
+        meaningful_labels: [" domestic", " wild"]
+        questions: ["Is a {item} a domestic animal or a wild animal?", "Question: Is the {item} wild or domesticated?"]
+        answers: {domestic: " domestic", wild: " wild"}
+    notes: >
+      Domestication is the least objective attribute in the design: only ~6 domestic birds are
+      unambiguous (chicken, hen, rooster, canary, budgie, cockatiel). Medium-confidence items
+      (duck, goose, turkey, pigeon, ...) are kept but flagged.
+  countries:
+    items: data/items/countries.csv
+    attributes:
+      continent:
+        values: [Europe, Asia]
+        words: {Europe: [Europe, European], Asia: [Asia, Asian]}
+        meaningful_labels: [" Europe", " Asia"]
+        questions: ["Is {item} in Europe or in Asia?", "Question: On which continent is {item}, Asia or Europe?"]
+        answers: {Europe: " Europe", Asia: " Asia"}
+      coast:
+        values: [coastal, landlocked]
+        words: {coastal: [coast, coastal, sea, ocean], landlocked: [inland, land]}  # " landlocked" is 2 tokens
+        meaningful_labels: [" coastal", " inland"]
+        questions: ["Does {item} have a sea coast, or is it landlocked?", "Question: Is {item} landlocked or coastal?"]
+        answers: {coastal: " coastal", landlocked: " landlocked"}
+    notes: >
+      Objective ground truth. Transcontinental countries excluded (Kazakhstan kept, medium).
+      Caspian-only coastline counts as landlocked. Asia-landlocked has only 10 items.
+  numbers:
+    items: data/items/numbers.csv
+    attributes:
+      parity:
+        values: [even, odd]
+        words: {even: [even], odd: [odd]}
+        meaningful_labels: [" even", " odd"]
+      magnitude:
+        values: [small, large]
+        words: {small: [small, low, less], large: [large, big, high, more]}
+        meaningful_labels: [" small", " large"]
+    notes: >
+      Knowledge-free control: two-digit numbers 10-99 except 50, magnitude split at 50.
+      Not filtered on zero-shot knowledge.
+  words:
+    items: data/items/words.csv
+    attributes:
+      category:
+        values: [animal, food]
+        words: {animal: [animal, animals], food: [food, foods, eat]}
+        meaningful_labels: [" animal", " food"]
+        questions: ["Is a {item} an animal or a food?", "Question: Is {item} a food or an animal?"]
+        answers: {animal: " animal", food: " food"}
+      first_letter:
+        values: [b, p]
+        words: {b: [B, b], p: [P, p]}
+        meaningful_labels: [" B", " P"]
+        questions: ["Does the word \"{item}\" start with the letter B or the letter P?", "Question: What is the first letter of \"{item}\", P or B?"]
+        answers: {b: " B", p: " P"}
+    notes: >
+      Surface (first letter) vs semantic regrouping. Single-letter lens concepts are noisy;
+      treat H4 results for first_letter as exploratory.
+
+# Arbitrary label pairs (single tokens after a space, checked in T-012). The first is the
+# default; >= 2 are used for counterbalancing.
+label_sets:
+  foo_bar: [" foo", " bar"]
+  dax_mip: [" dax", " mip"]  # " wug" is 2 tokens in Qwen3.5
+  zip_zap: [" zip", " zap"]
+
+# Meaningful-label control: per-attribute `meaningful_labels` above (single-token value names
+# or the nearest single-token synonym).
