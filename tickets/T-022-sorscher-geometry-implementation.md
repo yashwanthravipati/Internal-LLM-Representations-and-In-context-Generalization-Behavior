@@ -1,7 +1,7 @@
 ---
 id: T-022
 title: Implement Sorscher geometry estimators & SNR theory
-status: review
+status: done
 phase: 2
 priority: P0
 depends_on: [T-002]
@@ -48,3 +48,4 @@ This is the core of Project 5: implement the theory exactly, and validate it, be
   - Monte Carlo (via T-023's `prototype_error`): unit tests on isotropic, unequal-radii and signal–noise-overlap manifolds pass at |Δ| < 0.03 for m ∈ {1, 2, 5}; m → ∞ limit tested. Synthetic sweep `scripts/validate_theory_synthetic.py` → `results/20261026-0111_t022_synthetic_theory-vs-mc/` (summary.csv, parquet, figure): high-D MAE 0.005 (m = 1) → 0.001 (m = 10), r = 0.999; low-D (D ≈ 2.5) MAE ≈ 0.05, r ≈ 0.99, theory overestimates error. Docs updated (`docs/background/sorscher_theory.md`, normalization section).
   - Recommendation: use `full=True` as the primary theory prediction (lower error at small m); report the dominant-terms version as a sensitivity check. Logged as D-013 (proposed).
 - 2026-10-26 (claude): Work complete and verified; status held at `review` only because a dependency (T-002 git init, or T-011 item spot-check) is still open. Flip to `done` once that closes.
+- 2026-10-26 (claude): Dependency closed; status → done.

@@ -1,7 +1,7 @@
 ---
 id: T-003
 title: Compute environment & model access check
-status: review
+status: done
 phase: 0
 priority: P0
 depends_on: [T-002]
@@ -44,3 +44,4 @@ We need to know what hardware we have and that the candidate models load, run fe
 - 2026-10-26 (claude): Hardware is an M5 Pro MacBook (24 GB); MPS unavailable inside the agent sandbox, so agent runs are CPU-only. `scripts/smoke_test.py` + `src/icl_geometry/models/loading.py` (hook-based residual extraction, right padding, unembed). Ran on Qwen/Qwen3.5-0.8B and Qwen/Qwen3.5-2B-Base: both load as `Qwen3_5ForCausalLM`, 24 layers, d = 1024 / 2048; hybrid Gated-DeltaNet/full-attention blocks, hooks work identically on both block types. HF's last hidden state is post-norm (documented). Right-padding invariance holds (≤ 2e-5). Found and fixed a CPU bottleneck (depthwise conv fallback; `models/fast_kernels.py`, tested exact, ~15× speedup). `docs/COMPUTE.md` written with the model table, storage and wall-clock estimates. D-003 updated with evidence (main: 2B-Base; dev: 0.8B).
   - HF auth was not needed (public models). Weights cached under `data/hf_home/` (gitignored) because the default HF cache isn't writable from the sandbox.
 - 2026-10-26 (claude): Work complete and verified; status held at `review` only because a dependency (T-002 git init, or T-011 item spot-check) is still open. Flip to `done` once that closes.
+- 2026-10-26 (claude): Dependency closed; status → done.

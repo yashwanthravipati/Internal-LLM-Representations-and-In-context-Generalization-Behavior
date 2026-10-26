@@ -1,7 +1,7 @@
 ---
 id: T-002
 title: Repo scaffolding & Python environment
-status: review
+status: done
 phase: 0
 priority: P0
 depends_on: []
@@ -45,3 +45,4 @@ So far the repo holds only docs, tickets and `scripts/tickets.py`. Every other t
 - 2026-10-26 (claude): Created `pyproject.toml` (uv, hatchling, Python ≥ 3.11; ruff line length 100; pytest with a `slow` marker), `.gitignore`, `src/icl_geometry/{tasks,models,behavior,geometry,lens,analysis,utils}/`, `configs/{runs,prompts}/`, `data/items/`, `results/`, `figures/`, `notebooks/`, `tests/test_smoke.py`, README "Environment setup" section. Verified: `uv sync` OK (torch 2.14.1, transformers 5.20.2, Python 3.12.15), `uv run pytest` passes, `import icl_geometry` works, `uv run ruff check .` passes (fixed two lint issues in `scripts/tickets.py`, behaviour unchanged), `tickets.py check` passes.
   - **Not done:** `git init`. The agent sandbox forbids creating `.git/` in this folder, so the user must run it (see the session summary). `uv.lock` exists but is uncommitted. Status `review` until the repo is initialised and the first commit is approved.
   - Note: inside the agent sandbox, MPS (Apple GPU) is unavailable ("MPS backend is supported on macOS 14.0+" — a sandbox artefact; the host is macOS 26 on an M5 Pro). Agent runs use CPU; see `docs/COMPUTE.md` (T-003).
+- 2026-10-26 (claude): With the student's approval, committed and pushed to github.com/yashwanthravipati/Internal-LLM-Representations-and-In-context-Generalization-Behavior (`main`, 9 commits, uv.lock included). Because the sandbox can't create `.git/` in the project folder, git metadata lived in an external `--git-dir`; the student attaches the local folder with `git init -b main && git remote add origin <url> && git fetch origin && git reset origin/main`. A fresh clone passes `uv sync` and `uv run pytest -m "not slow"` (50 tests) and `tickets.py check`. Done.

@@ -1,7 +1,7 @@
 ---
 id: T-005
 title: Experiment config, run IDs & results storage conventions
-status: review
+status: done
 phase: 0
 priority: P0
 depends_on: [T-002]
@@ -42,3 +42,4 @@ Every number in the report must trace back to a run with its config, seed and co
 ## Work log
 - 2026-10-26 (claude): Implemented `src/icl_geometry/io.py`: `RunConfig` (YAML dataclass; unknown keys kept in `extra`), `make_run_id` (`<YYYYMMDD-HHMM>_<exp>_<model>_<desc>`), `Run` context manager (writes resolved `config.yaml` and `metadata.json` with git commit/dirty flag, package versions, device, host, start/end, status), JSONL/parquet helpers (temp-file + rename), `prompt_set_hash` (order-sensitive SHA-256 of canonical JSON, 12 hex), `ActivationWriter` (fp16 `open_memmap` per position in `<dir>.partial/`, refuses to finalize if any row is unwritten, renames on close) and `load_activations`. `src/icl_geometry/utils/seed.py` (`seed_everything`). Example config `configs/runs/example.yaml`. Tests `tests/test_io.py` (7 tests) pass; ruff clean. Implementation matches PLAN §7.3, no deviations. Note: git metadata is `null` until the repo is initialised (T-002).
 - 2026-10-26 (claude): Work complete and verified; status held at `review` only because a dependency (T-002 git init, or T-011 item spot-check) is still open. Flip to `done` once that closes.
+- 2026-10-26 (claude): Dependency closed; status → done.

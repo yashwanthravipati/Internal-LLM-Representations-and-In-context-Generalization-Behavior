@@ -1,7 +1,7 @@
 ---
 id: T-004
 title: Jacobian lens availability & compatibility spike
-status: review
+status: done
 phase: 0
 priority: P0
 depends_on: [T-003]
@@ -52,3 +52,4 @@ The J-lens is central to Exp 3 and decides the primary model, so this is an earl
   - Fit timing: a 1-prompt `jlens.fit` on 0.8B (CPU, dim_batch 32) **did not finish in > 45 min** and was stopped. Fitting our own lens (T-045) is not feasible in the agent sandbox; it would need a GPU (Neuronpedia's fits ran on a B200).
   - **Recommendation (D-003 revised):** main = Qwen3.5-2B-Base + plain J-lens; dev = Qwen3.5-0.8B + plain J-lens; J++ only as an optional robustness check.
 - 2026-10-26 (claude): Work complete and verified; status held at `review` only because dependency T-003 is held at review (see there).
+- 2026-10-26 (claude): Dependency closed; status → done.
