@@ -1,0 +1,11 @@
+# T-016 behavioral pilot (validation split only).
+exp: pilot
+model: Qwen/Qwen3.5-2B-Base
+prompt_set: data/prompts/exp2_pilot_io.jsonl
+desc: exp2_pilot_io
+batch_size: 16
+dtype: float32
+device: auto
+seed: 0
+calibrate: true
+cache_activations: false

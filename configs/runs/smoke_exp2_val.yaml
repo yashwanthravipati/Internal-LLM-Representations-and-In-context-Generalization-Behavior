@@ -1,0 +1,12 @@
+# End-to-end smoke test (dev model, tiny prompt set, activations cached).
+exp: smoke
+model: Qwen/Qwen3.5-0.8B
+prompt_set: data/prompts/smoke_exp2_val.jsonl
+desc: smoke-exp2-val
+positions: [query_item, decision]
+batch_size: 16
+dtype: float32
+device: auto
+seed: 0
+calibrate: true
+cache_activations: true

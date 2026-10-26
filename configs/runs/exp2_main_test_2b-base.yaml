@@ -1,0 +1,12 @@
+# Final exp2 sweep on the main model, test split. Run outside the agent sandbox for MPS.
+exp: exp2
+model: Qwen/Qwen3.5-2B-Base
+prompt_set: data/prompts/exp2_main_test.jsonl
+desc: main-test
+positions: [query_item, decision]
+batch_size: 16
+dtype: auto        # float32 on CPU, bfloat16 on MPS/CUDA
+device: auto
+seed: 0
+calibrate: true
+cache_activations: true

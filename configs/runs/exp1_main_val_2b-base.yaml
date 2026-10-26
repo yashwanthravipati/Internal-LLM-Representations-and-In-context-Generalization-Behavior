@@ -1,0 +1,12 @@
+# Final exp1 sweep on the main model, val split. Run outside the agent sandbox for MPS.
+exp: exp1
+model: Qwen/Qwen3.5-2B-Base
+prompt_set: data/prompts/exp1_main_val.jsonl
+desc: main-val
+positions: [query_item, decision]
+batch_size: 16
+dtype: auto        # float32 on CPU, bfloat16 on MPS/CUDA
+device: auto
+seed: 0
+calibrate: true
+cache_activations: false
