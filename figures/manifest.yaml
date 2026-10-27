@@ -1,0 +1,49 @@
+# Report figures (T-060). `uv run python scripts/make_figures.py` regenerates all of them.
+# Fill in `runs` with results/<run_id> paths once the real runs exist; entries with
+# placeholders are reported as PENDING. status: final | exploratory | smoke (see make_figures.py).
+figures:
+  - name: theory_vs_prototype_synthetic
+    ticket: T-022
+    caption: Eq. 1 vs Monte Carlo prototype learning on synthetic Gaussian manifolds (methods check).
+    runs: {t022: results/20261026-0111_t022_synthetic_theory-vs-mc}
+    status: final
+  - name: theory_vs_prototype_neutral
+    ticket: T-023
+    caption: Eq. 1 vs Monte Carlo prototype learning on neutral item representations of the main model.
+    runs: {t023: results/<t023 run, main model>}
+    status: final
+  - name: exp1_rho_by_layer
+    ticket: T-024
+    caption: Spearman rho between theory error and LLM error by depth; val (faded) selects the layer, test is reported.
+    runs: {exp1: results/<exp1 analysis run, select val / eval test>}
+    status: final
+  - name: exp1_scatter
+    ticket: T-024
+    caption: Theory vs LLM error per task (a, b, m) on test at the selected layer.
+    runs: {exp1: results/<exp1 analysis run>}
+    status: final
+  - name: exp1_learning_curves
+    ticket: T-024
+    caption: Mean error vs m for the LLM, the theory and the prototype simulation.
+    runs: {exp1: results/<exp1 analysis run>}
+    status: final
+  - name: h2_profile
+    ticket: T-032
+    caption: Cued vs uncued Delta-SNR and decoding accuracy relative to the random-label control, by depth.
+    runs: {h2: results/<exp2h2 run on the exp2 test run>}
+    status: final
+  - name: h3_auroc
+    ticket: T-033
+    caption: Held-out AUROC of the shift score for incongruent-query correctness, with the circular reference.
+    runs: {h3: results/<exp2h3 run>}
+    status: final
+  - name: h4_readout
+    ticket: T-041
+    caption: Rule readout (rank of cued minus uncued attribute words) under the J-lens and the logit lens.
+    runs: {jlens: results/<exp3readout J-lens run>, logit: results/<exp3readout --logit-lens run>}
+    status: final
+  - name: h5_auroc
+    ticket: T-043
+    caption: Test AUROC of shift scores from J-space, full states and dimension-matched baselines.
+    runs: {h5: results/<exp3jspace run>}
+    status: final

@@ -59,6 +59,8 @@ def main() -> None:
     ap.add_argument("--n-draws", type=int, default=200, help="Monte Carlo prototype draws")
     ap.add_argument("--geometry-items", default="split", choices=["split", "all"],
                     help="estimate manifolds from the prompt split's items or all items")
+    ap.add_argument("--desc", default=None, help="run-id suffix (default: analysis or "
+                    "exploratory); use 'smoke' for plumbing checks")
     args = ap.parse_args()
     exploratory = args.select_split == args.eval_split
 
@@ -69,7 +71,7 @@ def main() -> None:
     items = exp1_items(PromptConfig(name="x", experiment="exp1", split="val"), domains)
 
     cfg = io.RunConfig(exp="exp1", model=args.model, prompt_set=",".join(args.behavior),
-                       desc="exploratory" if exploratory else "analysis",
+                       desc=args.desc or ("exploratory" if exploratory else "analysis"),
                        extra=vars(args) | {"neutral_cache": str(cache)})
     with io.Run(cfg) as run:
         results, profiles = {}, []

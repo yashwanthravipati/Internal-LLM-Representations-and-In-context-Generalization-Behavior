@@ -1,14 +1,14 @@
 ---
 id: T-060
 title: Figure pipeline & shared style
-status: todo
+status: in-progress
 phase: 6
 priority: P1
 depends_on: [T-005]
-owner: unassigned
+owner: claude
 estimate: S
 tags: [writing, figures, reproducibility]
-updated: 2026-10-25
+updated: 2026-10-27
 ---
 
 # T-060 — Figure pipeline & shared style
@@ -35,3 +35,10 @@ Every report figure must be regenerated from `results/` by a script: no hand-mad
 - PLAN §7.1; CLAUDE.md (guardrails)
 
 ## Work log
+- 2026-10-27 (claude): Built the pipeline.
+  - `src/icl_geometry/plotting.py`: `ROLE_COLORS` (fixed colors for cued/uncued, conditions, predictors, H5 representations, models), `depth()` (normalized depth 0–100), `watermark()` / `banner()`, and `save(..., formats=("pdf",))`.
+  - `scripts/make_figures.py`: 9 figure functions (theory_vs_prototype_synthetic/neutral, exp1_rho_by_layer, exp1_scatter, exp1_learning_curves, h2_profile, h3_auroc, h4_readout, h5_auroc), each reading only saved run files. Writes PNG + PDF + a `.source.json` sidecar (source run IDs and git commits). Placeholder runs print PENDING; `status: smoke` goes to the gitignored `figures/smoke/` with a watermark (D-014).
+  - `figures/manifest.yaml` (report figures; all but the synthetic validation are PENDING until real runs exist), `figures/manifest_smoke.yaml` (0.8B smoke runs), `figures/README.md` (index).
+  - `tests/test_figures.py`: every figure function renders from synthetic run dirs with the analysis scripts' file/column layout; quarantine and PENDING behaviour tested.
+  - Verified: `make_figures.py --manifest figures/manifest_smoke.yaml` makes all 9 figures; inspected them for layout (fixed two legend overlaps).
+  - **Remaining:** fill in `figures/manifest.yaml` run paths once the real runs exist. The analysis scripts still draw their own quick-look figures with `apply_style`/`SERIES`; the report figures come from `make_figures.py`.

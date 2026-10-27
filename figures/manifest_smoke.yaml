@@ -1,0 +1,12 @@
+# Plumbing check for scripts/make_figures.py on the 0.8B smoke/pilot runs (2026-10-26/27).
+# Outputs go to figures/smoke/ (gitignored) with a SMOKE TEST watermark. Not results.
+figures:
+  - {name: theory_vs_prototype_synthetic, runs: {t022: results/20261026-0111_t022_synthetic_theory-vs-mc}, status: smoke}
+  - {name: theory_vs_prototype_neutral, runs: {t023: results/20261027-1509_t023_qwen3.5-0.8b_dev}, status: smoke}
+  - {name: exp1_rho_by_layer, runs: {exp1: results/20261027-1507_exp1_qwen3.5-0.8b_smoke}, status: smoke}
+  - {name: exp1_scatter, runs: {exp1: results/20261027-1507_exp1_qwen3.5-0.8b_smoke}, status: smoke}
+  - {name: exp1_learning_curves, runs: {exp1: results/20261027-1507_exp1_qwen3.5-0.8b_smoke}, status: smoke}
+  - {name: h2_profile, runs: {h2: results/20261026-0212_exp2h2_qwen3.5-0.8b_h2}, status: smoke}
+  - {name: h3_auroc, runs: {h3: results/20261026-0211_exp2h3_qwen3.5-0.8b_h3}, status: smoke}
+  - {name: h4_readout, runs: {jlens: results/20261026-0212_exp3readout_qwen3.5-0.8b_jlens}, status: smoke}
+  - {name: h5_auroc, runs: {h5: results/20261026-0212_exp3jspace_qwen3.5-0.8b_h5}, status: smoke}

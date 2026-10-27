@@ -26,3 +26,6 @@ data/prompts/
 
 # Local Claude Code state
 .claude/
+
+# Smoke-test figures from scripts/make_figures.py (never part of the report)
+figures/smoke/
