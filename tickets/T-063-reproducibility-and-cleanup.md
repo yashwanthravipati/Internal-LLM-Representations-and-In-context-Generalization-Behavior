@@ -34,3 +34,4 @@ The final code submission (if the course requires one), and the project's credib
 - PLAN §7; CLAUDE.md (traceability)
 
 ## Work log
+- 2026-10-27 (claude): Early pieces, ahead of the dependency: `.github/workflows/tests.yml` (uv sync, ruff, fast tests, ticket check on push/PR; not yet run on GitHub) and a `Makefile` wrapping the RUNBOOK stages (`make help`). Fixed a `RunConfig.from_yaml` bug: reloading a saved `config.yaml` nested `extra` under `extra["extra"]`, so options such as `eval_split` or `limit` were invisible to scripts that re-read a run's config (`check_integrity.py` silently ignored `limit`). Regression test in `tests/test_io.py`.

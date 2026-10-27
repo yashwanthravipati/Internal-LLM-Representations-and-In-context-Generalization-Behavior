@@ -1,0 +1,23 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  fast-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Install (CPU torch)
+        run: uv sync
+      - name: Lint
+        run: uv run ruff check src scripts tests
+      - name: Fast tests (no model weights)
+        run: uv run pytest -m "not slow" -q
+      - name: Ticket consistency
+        run: python3 scripts/tickets.py check
