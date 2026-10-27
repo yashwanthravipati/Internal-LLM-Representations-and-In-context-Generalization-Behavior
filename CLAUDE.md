@@ -39,7 +39,7 @@ The deliverable is a research report (and probably a presentation). Format and d
 | `docs/background/` | Theory notes (Sorscher equations, verified), Jacobian-lens notes, neuroscience connections |
 | `tickets/` | Ticket system: `README.md` (how it works), `BOARD.md` (generated), `T-NNN-*.md` |
 | `scripts/tickets.py` | Ticket command-line tool (stdlib only) |
-| `src/icl_geometry/` | Python package. **Not created yet** (T-002); layout in PLAN §7.1 |
+| `src/icl_geometry/` | Python package (T-002 onward); layout in PLAN §7.1. Run order: `docs/RUNBOOK.md` |
 | `configs/`, `data/`, `results/`, `figures/`, `tests/`, `notebooks/` | Created by T-002/T-005 (see PLAN §7) |
 
 ## How to work in this repo
@@ -80,7 +80,7 @@ The deliverable is a research report (and probably a presentation). Format and d
 
 - **Sorscher Eq. 1:** `SNR_a = ½[‖Δx₀‖² + (R_b²/R_a² − 1)/m] / √(D_a⁻¹/m + ‖Δx₀·U_b‖²/m + ‖Δx₀·U_a‖²)`, with error `ε_a = H(SNR_a)` (Gaussian tail). Official code: github.com/bsorsch/geometry-fewshot-learning. Normalization conventions are subtle: port them from the official code and validate with Monte Carlo.
 - **Jacobian lens:** `J_ℓ = E[∂h_final/∂h_ℓ]`; readout `softmax(W_U · norm(J_ℓ h))`; concept vector `v_t = J_ℓᵀ W_U[t]`. The J-space is a sparse non-negative combination of ≤ 25 lens vectors, coherent only in middle layers, and explains ≤ ~10% of variance. Package: `jlens` from github.com/anthropics/jacobian-lens (unmaintained, so pin the commit). Concepts must be single tokens.
-- **Pre-fitted lenses:** HF `neuronpedia/jacobian-lens` has **J++** lenses (a variant; differences unverified) for Qwen3.5-0.8B, Qwen3.5-2B, Qwen3-4B, Qwen3.5-9B and larger models. A lens is valid only for the exact checkpoint it was fitted on. Verify base vs post-trained in T-004.
+- **Pre-fitted lenses:** HF `neuronpedia/jacobian-lens` has plain J-lens fits (`*/jlens/`) as well as **J++** variants. We use the plain fits: `qwen3.5-2b-pt/jlens` (= Qwen/Qwen3.5-2B-Base, main) and `qwen3.5-0.8b/jlens` (dev); see D-003 and T-004. A lens is valid only for the exact checkpoint it was fitted on.
 
 ## Glossary
 

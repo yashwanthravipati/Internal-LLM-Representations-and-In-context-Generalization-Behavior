@@ -58,6 +58,12 @@ uv run python scripts/neutral_sanity.py --model Qwen/Qwen3.5-2B-Base   # results
 **Decision (D-011, D-012):** carrier averaging and outlier handling (re-check the top-1
 variance share on 2B-Base).
 
+Theory check on the real geometry (T-023; reads the cache only, ~30 s):
+
+```bash
+uv run python scripts/validate_theory_neutral.py --model Qwen/Qwen3.5-2B-Base
+```
+
 ## 4. Experiment 1 (T-024, the MVP)
 
 Lock the primary metrics first (D-005 → accepted).
@@ -85,7 +91,11 @@ for sp in val test; do
 done
 uv run python scripts/run_exp2_h2.py --run results/<exp2 test run>          # H2 (T-032)
 uv run python scripts/run_exp2_h3.py --val-run results/<val> --test-run results/<test>  # H3
+uv run python scripts/run_exp2_robustness.py --val-run results/<val> --test-run results/<test>  # T-034
 ```
+
+The robustness table (`ROBUSTNESS.md`) classifies each claim × variation as holds / weakens /
+fails / n/a (D-015). A second model size needs its own Exp 2 runs.
 
 Activation caches: ~2 GB per split for 2B-Base (`data/cache/`, gitignored).
 
@@ -100,6 +110,16 @@ uv run python scripts/run_exp3_jspace.py --val-run results/<val> --test-run resu
 `run_exp3_jspace.py` runs gradient pursuit (k = 25) over an 8k-word concept vocabulary at 3
 middle layers by default. This is GPU-sized work; on CPU, use `--max-prompts` and
 `--vocab-size` to subsample.
+
+## 7. Figures (T-060, no model)
+
+Fill in the run paths in `figures/manifest.yaml`, then:
+
+```bash
+uv run python scripts/make_figures.py     # figures/<name>.png + .pdf + .source.json
+```
+
+`make help` lists Makefile shortcuts for every stage.
 
 ## Smoke test of the whole pipeline (minutes, dev model)
 
@@ -136,3 +156,6 @@ Smoke outputs check the plumbing only. They are not results.
 | Exp 1 | `scripts/run_exp1_analysis.py` | T-024 |
 | Exp 2 | `scripts/run_exp2_h2.py`, `scripts/run_exp2_h3.py` | T-032/T-033 |
 | Exp 3 | `scripts/run_exp3_readout.py`, `scripts/run_exp3_jspace.py` | T-041/T-042/T-043 |
+| Theory on neutral reps | `scripts/validate_theory_neutral.py` | T-023 |
+| Exp 2 robustness | `scripts/run_exp2_robustness.py` | T-034 |
+| Report figures | `scripts/make_figures.py` (+ `figures/manifest.yaml`) | T-060 |
