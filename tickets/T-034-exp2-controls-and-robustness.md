@@ -1,14 +1,14 @@
 ---
 id: T-034
 title: Controls & robustness for Experiment 2
-status: todo
+status: in-progress
 phase: 3
 priority: P1
 depends_on: [T-032, T-033]
-owner: unassigned
+owner: claude
 estimate: M
 tags: [analysis, exp2, controls]
-updated: 2026-10-25
+updated: 2026-10-27
 ---
 
 # T-034 — Controls & robustness for Experiment 2
@@ -40,3 +40,9 @@ Before putting Exp 2 claims in the report, check that they don't hinge on incide
 - PLAN §10
 
 ## Work log
+- 2026-10-27 (claude): Code built ahead of the real Exp 2 runs (no model needed).
+  - `src/icl_geometry/analysis/robustness.py`: `classify_cell` (rules in D-015), H2 claims + bootstrap, a permutation null for ΔSNR_cued (shuffle main/random_label within group), H3 bootstrap, D-012 transforms (raw / drop top-5 / standardize), D-011 neutral variants (carrier mean / single carriers), `robustness_table` + `pivot_cells`.
+  - `scripts/run_exp2_robustness.py --val-run --test-run` → `ROBUSTNESS.md`, `robustness.csv`, `robustness_wide.csv`, `summary.json` in a new run dir (copy or link as `results/exp2/ROBUSTNESS.md` for the report).
+  - `tests/test_robustness.py`: planted label_map-only effect is classified holds vs weakens; permutation null rejects it; deterministic.
+  - Smoke check: `results/20261027-1510_exp2robust_qwen3.5-0.8b_smoke/` (plumbing only; tiny set, nearly all cells weakens).
+  - **Remaining:** run on the real val/test Exp 2 runs; second model size (needs model runs); student sign-off on D-015.
