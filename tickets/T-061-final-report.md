@@ -39,3 +39,4 @@ This is the main course deliverable. Format, length and deadline come from T-001
 - PLAN; `docs/background/*`; `results/*/REPORT.md`
 
 ## Work log
+- 2026-10-27 (claude): Drafted `report/report.md` (skeleton) and `report/README.md`. Introduction and Methods are first drafts written against the implemented code; Results are `RESULT PENDING` slots naming the source run and figure (no numbers); Discussion is a scaffold; open decisions are marked `[TBD: …]`. The student owns the final text. Doc/code inconsistencies found while drafting are listed in `PROGRESS.md`.
