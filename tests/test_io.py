@@ -68,3 +68,11 @@ def test_seed_everything_reproducible():
     a = seed_everything(3).standard_normal(4)
     b = seed_everything(3).standard_normal(4)
     np.testing.assert_array_equal(a, b)
+
+
+def test_run_config_yaml_roundtrip(tmp_path):
+    cfg = io.RunConfig(exp="e", model="m", prompt_set="p", extra={"a": 1, "b": [1, 2]})
+    path = tmp_path / "config.yaml"
+    path.write_text(__import__("yaml").safe_dump(cfg.to_dict()))
+    back = io.RunConfig.from_yaml(path)
+    assert back == cfg  # `extra` is merged, not nested under extra["extra"]

@@ -50,7 +50,9 @@ class RunConfig:
     def from_yaml(cls, path: str | Path) -> RunConfig:
         raw = yaml.safe_load(Path(path).read_text())
         known = {f for f in cls.__dataclass_fields__ if f != "extra"}
-        extra = {k: v for k, v in raw.items() if k not in known}
+        # a saved config (to_dict) already has an `extra` mapping: merge it, don't nest it
+        extra = dict(raw.pop("extra", None) or {})
+        extra |= {k: v for k, v in raw.items() if k not in known}
         return cls(**{k: v for k, v in raw.items() if k in known}, extra=extra)
 
     def to_dict(self) -> dict[str, Any]:
